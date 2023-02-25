@@ -80,3 +80,30 @@ class Solution:
 
         return int_sum
 ```
+
+## [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
+Find the longest common prefix string amongst an array of strings.
+
+### Approach
+Loop over the elements of the first string in the array. Inside, loop over all the other strings and check for the presence of the common prefix.
+
+### Code 
+
+```
+class Solution:
+
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+
+        common_prefix = ""
+
+        for i in range(len(strs[0])):     
+            alphabet_to_check = strs[0][i]
+
+            for ind_str in strs[1:]:
+                if i == len(ind_str) or ind_str[i] != alphabet_to_check:
+                    return common_prefix 
+
+            common_prefix += alphabet_to_check
+        
+        return common_prefix
+```
