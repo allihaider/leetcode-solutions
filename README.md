@@ -107,3 +107,34 @@ class Solution:
         
         return common_prefix
 ```
+
+## [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/submissions/)
+Given an string of parentheses, determine if all the open parentheses are being properly closed.
+
+### Approach
+Traverse through the characters in the string and use a stack to keep track of any open braces that need to be closed. 
+
+### Code 
+```
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+
+        if len(s) == 1:
+            return False
+
+        for brace in s:
+            if brace in ["(", "[" , "{"]:
+                stack.append(brace)
+            elif len(stack) > 0:
+                if (stack[-1] == "(" and brace == ")") or (stack[-1] == "[" and brace == "]") or (stack[-1] == "{" and brace == "}"):
+                    stack.pop()
+                else:
+                    return False
+            else:
+                return False
+
+        stack_empty = len(stack) == 0
+
+        return stack_empty
+```
