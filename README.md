@@ -186,3 +186,46 @@ class Solution:
 
         return head.next
 ```
+
+Approach for sorting both linked lists by adding elements from the second linked list into the first (opposed to keeping a separate linked list for storing the sorted elements).
+
+```
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+        list1_is_empty = list1 == None
+        list2_is_empty = list2 == None
+
+        if list1_is_empty and list2_is_empty:
+            return None
+        if list1_is_empty:
+            return list2
+        if list2_is_empty:
+            return list1
+
+        final_head = list1
+        prev = None
+
+        while list1 is not None and list2 is not None:
+            if list2.val < list1.val:
+                temp = list2.next
+
+                if prev is not None:
+                    prev.next = list2
+                else:
+                    final_head = list2
+
+                list2.next = list1
+                prev = list2
+                list2 = temp
+            else:
+                prev = list1
+                list1 = list1.next
+
+        if list1 is None:
+            prev.next = list2
+        else:
+            prev.next = list1
+
+        return final_head
+```
