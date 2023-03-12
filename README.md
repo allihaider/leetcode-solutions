@@ -138,3 +138,51 @@ class Solution:
 
         return stack_empty
 ```
+
+## [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+Given the heads of 2 sorted linked list, merge them into 1 sorted linked list.
+
+### Approach
+Compare individual elements of the two linked lists using pointers. Move the pointer to the next element of a linked list once an item from that linked list is inserted into the final sorted linked list. 
+
+### Code 
+```
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+        list1_is_empty = list1 == None
+        list2_is_empty = list2 == None
+
+        if list1_is_empty and list2_is_empty:
+            return None
+        if list1_is_empty:
+            return list2
+        if list2_is_empty:
+            return list1
+
+        sorted_list = ListNode()
+        head = sorted_list
+
+        while (list1 is not None) and (list2 is not None):
+            if list1.val < list2.val:
+                sorted_list.next = list1
+                list1 = list1.next
+                sorted_list = sorted_list.next
+            else:
+                sorted_list.next = list2
+                list2 = list2.next
+                sorted_list = sorted_list.next
+
+        if list1 is None:
+            sorted_list.next = list2
+        else:
+            sorted_list.next = list1
+
+        return head.next
+```
