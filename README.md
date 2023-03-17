@@ -229,3 +229,24 @@ class Solution:
 
         return final_head
 ```
+
+## [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+Given a sorted integer array, remove the duplicates in-place.
+
+### Approach
+Keep track of the index at which each insertion is to be made. Traverse through the array elements and insert an element if it is different from its predecessor.
+
+### Code 
+```
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        insertion_index = 0
+        
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1]:
+                insertion_index += 1
+                nums[insertion_index] = nums[i]
+                
+        return insertion_index + 1
+
+```
