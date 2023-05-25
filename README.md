@@ -284,3 +284,36 @@ class Solution:
 
         return True
 ```
+
+## 8. [Find the Index of the First Occurrence in a String](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/)
+Given two strings, return the index of the first occurence of the second string in the first string.
+
+### Approach
+Go over the first string element by element and check if it matches element by element with the second string.
+
+### Code 
+```
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+
+        if len(needle) == 0:
+            return -1
+
+        i = 0
+        j = 0
+
+        while i < len(haystack) and j < len(needle):
+            if haystack[i] == needle[j]:
+                if j == (len(needle) - 1):
+                    return i - len(needle) + 1
+
+                j += 1
+                i += 1
+
+            else:
+                i -= j
+                j = 0
+                i += 1
+    
+        return -1
+```
