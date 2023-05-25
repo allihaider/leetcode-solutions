@@ -250,3 +250,37 @@ class Solution:
         return insertion_index + 1
 
 ```
+
+## [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+Given a string, check if it is a palindrome.
+
+### Approach
+Use two pointers starting from opposite ends of the string. Check character by character if the palindrome property is satisfied.
+
+### Code 
+```
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        s = s.lower()
+        left_index = 0
+        right_index = len(s) - 1
+
+        while left_index < right_index:
+
+            if not s[left_index].isalnum():
+                left_index += 1
+                continue
+
+            if not s[right_index].isalnum():
+                right_index -= 1
+                continue
+            
+            if s[left_index] == s[right_index]:
+                left_index += 1
+                right_index -= 1
+            else:
+                return False
+
+        return True
+```
