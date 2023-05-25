@@ -1,6 +1,6 @@
 # Easy Problems
 
-## [Two Sum](https://leetcode.com/problems/two-sum/)
+## 1. [Two Sum](https://leetcode.com/problems/two-sum/)
 Given an array of integers and a target, return indices of the two numbers such that they add up to the target.
 
 ### Approach
@@ -23,7 +23,7 @@ class Solution:
         return
 ```
 
-## [Roman to Integer](https://leetcode.com/problems/roman-to-integer/)
+## 2. [Roman to Integer](https://leetcode.com/problems/roman-to-integer/)
 Given roman numerals and their values, convert a given roman numeral to an integer.
 
 ### Approach
@@ -81,7 +81,7 @@ class Solution:
         return int_sum
 ```
 
-## [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
+## 3. [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
 Find the longest common prefix string amongst an array of strings.
 
 ### Approach
@@ -108,7 +108,7 @@ class Solution:
         return common_prefix
 ```
 
-## [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/submissions/)
+## 4. [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/submissions/)
 Given an string of parentheses, determine if all the open parentheses are being properly closed.
 
 ### Approach
@@ -139,7 +139,7 @@ class Solution:
         return stack_empty
 ```
 
-## [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+## 5. [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
 Given the heads of 2 sorted linked list, merge them into 1 sorted linked list.
 
 ### Approach
@@ -230,7 +230,7 @@ class Solution:
         return final_head
 ```
 
-## [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+## 6. [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 Given a sorted integer array, remove the duplicates in-place.
 
 ### Approach
@@ -251,7 +251,7 @@ class Solution:
 
 ```
 
-## [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
+## 7. [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/)
 Given a string, check if it is a palindrome.
 
 ### Approach
