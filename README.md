@@ -317,3 +317,39 @@ class Solution:
     
         return -1
 ```
+
+## 9. [Word Pattern](https://leetcode.com/problems/word-pattern/)
+Given two strings, determine if the second string follows that same pattern as the first string.
+
+### Approach
+Go over both strings element by element and use a hashmap to keep track of the pattern being formed. If it is broken, return false.
+
+### Code 
+```
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        words = s.split(" ")
+
+        if len(pattern) != len(words):
+            return False
+
+        element_2_word = {}
+
+        for pattern_element, word in zip(pattern, words):
+
+            if pattern_element not in element_2_word.keys():
+
+                if word not in element_2_word.values():
+                    element_2_word[pattern_element] = word
+                else:
+                    return False
+
+            else: 
+
+                if element_2_word[pattern_element] != word:
+                    return False
+                else:
+                    pass
+        
+        return True
+```
