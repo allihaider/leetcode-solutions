@@ -88,7 +88,6 @@ Find the longest common prefix string amongst an array of strings.
 Loop over the elements of the first string in the array. Inside, loop over all the other strings and check for the presence of the common prefix.
 
 ### Code 
-
 ```
 class Solution:
 
@@ -352,4 +351,38 @@ class Solution:
                     pass
         
         return True
+```
+
+## 10. [Summary Ranges](https://leetcode.com/problems/summary-ranges/)
+Given a sorted unique integer array, return the smallest sorted list of inclusive ranges that cover all numbers in the array exactly.
+
+### Approach
+Iterate over the elements in the sorted array and keep building the range elements by checking for continuity between consecutive integer values.
+
+### Code 
+```
+class Solution:
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+
+        if len(nums) == 0:
+            return []
+
+        ranges = []
+        range_element = str(nums[0])
+
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1] + 1:
+
+                if str(nums[i - 1]) != range_element:
+                    range_element += f"->{nums[i - 1]}"
+
+                ranges.append(range_element)
+                range_element = str(nums[i])
+                
+        if nums[len(nums) - 1] == nums[len(nums) - 2] + 1:
+            range_element += f"->{nums[len(nums) - 1]}"
+        
+        ranges.append(range_element)
+        
+        return ranges
 ```
