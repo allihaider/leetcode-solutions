@@ -387,9 +387,38 @@ class Solution:
         return ranges
 ```
 
+## 11. [Same Tree](https://leetcode.com/problems/same-tree/)
+Given the roots of two binary trees, determine if the trees are exactly the same or not.
+
+### Approach
+Do a recursive dfs traversal of the binary trees and at each step, check if the condition for equality is broken.
+
+### Code 
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if p is None and q is None:
+            return True
+        elif p is None or q is None:
+            return False
+        else:
+            if p.val == q.val:
+                return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+            else:
+                return False
+        
+        return True
+```
+
 # Medium Problems
 
-## 11. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+## 1. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
 Given an array of integers and a target integer, return the minimum possible subarray size that sums to a value greater than or equal to the target integer.
 
 ### Approach
