@@ -386,3 +386,36 @@ class Solution:
         
         return ranges
 ```
+
+# Medium Problems
+
+## 11. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+Given an array of integers and a target integer, return the minimum possible subarray size that sums to a value greater than or equal to the target integer.
+
+### Approach
+Use a sliding window to consider the possible subarrays and keep track of the minimum length found so far.
+
+### Code 
+```
+class Solution:
+    def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+        left_index = 0
+        right_index = 0
+        subarray_sum = 0
+        min_subarray_length = float("inf")
+
+        while right_index < len(nums):
+            subarray_sum += nums[right_index]
+
+            while subarray_sum >= target:
+                min_subarray_length = min(min_subarray_length, right_index - left_index + 1)
+                subarray_sum -= nums[left_index]
+                left_index += 1
+            
+            right_index += 1
+        
+        if min_subarray_length != float("inf"):
+            return min_subarray_length
+        else:
+            return 0
+```
