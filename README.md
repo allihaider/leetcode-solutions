@@ -416,6 +416,47 @@ class Solution:
         return True
 ```
 
+## 12. [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/)
+Given the root of a binary tree, return the averages values of the nodes at each level.
+
+### Approach
+Do a bfs traversal of the binary tree and calculate the average value at each level. The length of the bfs queue at different times can indicate the number of nodes at a certain level.
+
+### Code 
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        bfs_queue = []
+        bfs_queue.append(root)
+
+        
+        averages = []
+
+        while len(bfs_queue) != 0:
+            level_sum = 0
+
+            for i in range(len(bfs_queue)):
+                node = bfs_queue.pop(0)
+                level_sum += node.val
+
+                if node.left is not None:
+                    bfs_queue.append(node.left)
+                
+                if node.right is not None:
+                    bfs_queue.append(node.right)
+
+            level_average = level_sum / (i+1)
+            averages.append(level_average)
+        
+        return averages
+```
+
 # Medium Problems
 
 ## 1. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
