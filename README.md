@@ -457,6 +457,37 @@ class Solution:
         return averages
 ```
 
+## 13. [Convert Sorted Array to Binary Search Tree](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/)
+Given an integer array that is sorted in ascending order, convert it into a height-balanced binary search tree.
+
+### Approach
+Given the ascending order of the array, the root for the tree will be the middle element. Subsequent subtree tree can be made using the same logic on only a part of the array. Use divide and conquer to build the binary search tree.
+
+### Code 
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+        if len(nums) == 1:
+            return TreeNode(nums[0])
+        if len(nums) == 0:
+            return None
+        
+        mid = len(nums) // 2
+        root = TreeNode(nums[mid])
+        root.left = self.sortedArrayToBST(nums[:mid])
+        root.right = self.sortedArrayToBST(nums[mid + 1:])
+        
+        return root
+```
+
+
 # Medium Problems
 
 ## 1. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
