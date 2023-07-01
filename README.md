@@ -556,6 +556,25 @@ class Solution:
         return min_difference
 ```
 
+## 16. [Number of 1 Bits](https://leetcode.com/problems/number-of-1-bits/)
+Given a binary representation of an unsigned integer, return the number of 1 bits it has.
+
+### Approach
+Involves using a numerical trick that counts that number of ones. The other option is to count bit by bit. That can be done by modding the number by 2 to check bit polarity and dividing by 2 to shift right.
+
+### Code 
+```
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        count = 0
+
+        while n:
+            n &= (n - 1)
+            count += 1
+
+        return count
+```
+
 
 # Medium Problems
 
