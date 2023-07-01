@@ -487,6 +487,35 @@ class Solution:
         return root
 ```
 
+## 14. [Search Insert Position](https://leetcode.com/problems/search-insert-position/)
+Given a sorted array of distinct integers and a target, return the index if the target is found, else return the index where it would be if inserted in order.
+
+### Approach
+Perform binary search on the array to find the element. If not found, compare with the last element in the array with against which the item has not been checked to determine the insertion index.
+
+### Code 
+```
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        
+        start_index = 0
+        end_index = len(nums) - 1
+
+        while end_index > start_index:
+            middle_index = (end_index+start_index) // 2
+            if target < nums[middle_index]:
+                end_index = middle_index
+            elif target > nums[middle_index]:
+                start_index = middle_index + 1
+            else:
+                return middle_index
+        
+        if target <= nums[start_index]:
+            return start_index
+        else:
+            return start_index + 1
+```
+
 
 # Medium Problems
 
