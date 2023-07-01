@@ -516,6 +516,46 @@ class Solution:
             return start_index + 1
 ```
 
+## 15. [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/)
+Given the root of a Binary Search Tree (BST), return the minimum absolute difference between the values of any two different nodes in the tree.
+
+### Approach
+The minimum absolute difference will be found between two consecutive values in the tree if the elements were sorted. An inorder traversal of a binary search tree visits the elements in sorted order. Use this idea to keep track of the minimum distance found so far during the search.
+
+### Code 
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        prev_node = None
+        min_difference = float("inf")
+
+        def traverse_tree_inorder(node):
+            nonlocal prev_node, min_difference
+
+            if node.left is not None:
+                traverse_tree_inorder(node.left)
+
+            if prev_node is not None:
+                min_difference = min(min_difference, abs(prev_node.val - node.val))
+            
+            prev_node = node
+            
+            if node.right is not None:
+                traverse_tree_inorder(node.right)
+
+            return
+        
+        traverse_tree_inorder(root)
+
+        return min_difference
+```
+
 
 # Medium Problems
 
