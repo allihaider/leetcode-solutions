@@ -605,6 +605,25 @@ class Solution:
         
         return digits
 ```
+## 18. [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+You can climb either one or two steps at a time. Calculate the different ways to climb n steps.
+
+### Approach
+The problem follows the same pattern as fibonacci numbers. Add results for base cases and generate results for further cases using those from previous cases.
+
+### Code 
+```
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        steps_permutations = dict()
+        steps_permutations[1] = 1
+        steps_permutations[2] = 2
+
+        for i in range(3, n + 1):
+            steps_permutations[i] =  steps_permutations[i-1] + steps_permutations[i-2]
+
+        return steps_permutations[n]
+```
 
 
 # Medium Problems
