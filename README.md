@@ -575,6 +575,37 @@ class Solution:
         return count
 ```
 
+## 17. [Plus One](https://leetcode.com/problems/plus-one/)
+Given an integer represented as an array of digits, increment the resulting array of digits if the integer was incremented by 1.
+
+### Approach
+Loop over the array, chaging the digits as necessary of one was added to the digit. Break once there is no more carry.
+
+### Code 
+```
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        carry = True
+
+        for i in range(len(digits)):
+            if digits[len(digits) - (i+1)] == 9 and carry:
+                digits[len(digits) - (i+1)] = 0
+                carry = True
+            elif carry:
+                digits[len(digits) - (i+1)] += 1
+                carry = False
+                break
+            else:
+                digits[len(digits) - (i+1)] += 1
+                carry = False
+                break
+
+        if carry:
+            digits = [1] + digits
+        
+        return digits
+```
+
 
 # Medium Problems
 
