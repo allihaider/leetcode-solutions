@@ -605,6 +605,7 @@ class Solution:
         
         return digits
 ```
+
 ## 18. [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
 You can climb either one or two steps at a time. Calculate the different ways to climb n steps.
 
@@ -623,6 +624,39 @@ class Solution:
             steps_permutations[i] =  steps_permutations[i-1] + steps_permutations[i-2]
 
         return steps_permutations[n]
+```
+
+## 19. [Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
+You are given two integer arrays sorted in non-decreasing order. The length of the first array is that of the combined array. Add elements into the first array so the result is the sorted and combined array.
+
+### Approach
+Keep track of the index for each individual array while inserting and decrement the index for the array from which the insertion was made. Starting insertion from the end of the first array will ensure that you do not need to shift elements while insertion.
+
+### Code 
+```
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i = m - 1
+        j = n - 1
+        k = m + n - 1
+
+        while i >= 0 and j >= 0:
+            if nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                i -= 1
+                k -= 1
+            else:
+                nums1[k] = nums2[j]
+                j -= 1
+                k -= 1
+        
+        while j >= 0:
+            nums1[k] = nums2[j]
+            j -= 1
+            k -= 1
 ```
 
 
