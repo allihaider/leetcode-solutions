@@ -659,6 +659,29 @@ class Solution:
             k -= 1
 ```
 
+## 20. [Remove Element](https://leetcode.com/problems/remove-element/)
+Given an integer array and element, remove all occurences of the element from the array in-place.
+
+### Approach
+Using an insertion index, keep inserting elements into the array and skip when you encounter the target element.
+
+### Code 
+```
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        
+        if len(nums) == 0:
+            return 0
+        
+        insertion_index = 0
+
+        for element in nums:
+            if element != val:
+                nums[insertion_index] = element
+                insertion_index += 1
+        
+        return insertion_index
+```
 
 # Medium Problems
 
