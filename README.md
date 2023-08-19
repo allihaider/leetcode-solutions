@@ -683,6 +683,34 @@ class Solution:
         return insertion_index
 ```
 
+## 21. [Majority Element](https://leetcode.com/problems/majority-element/)
+Given an integer array, return the majority element/ the element that occurs more than floor(n/2) times where n is the length the array.
+
+### Approach
+Use Moore's voting algorithm to keep a count and a candidate. Traverse through the array and increment or decrement the count if the same or a different element is encountered.
+
+### Code 
+```
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+
+        candidate = None
+        count = 0
+
+        for number in nums:
+
+            if count == 0:
+                candidate = number
+                count = 1  
+            else:
+                if number == candidate:
+                    count += 1
+                else:
+                    count -= 1
+        
+        return candidate
+```
+
 # Medium Problems
 
 ## 1. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
