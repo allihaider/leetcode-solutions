@@ -743,7 +743,7 @@ class Solution:
 Given the head of linked list, determine if it has a cycle.
 
 ### Approach
-The regular O(n) time and space way to do this would be to use a hashmap. In this solution, we use the Hare-Tortoise algorithm which uses two pointers where one runs through the linked list faster than the other. 
+The regular O(n) time and space way to do this would be to use a hashmap which usually works with python objects by default. In this solution, we use the Hare-Tortoise algorithm which uses two pointers where one runs through the linked list faster than the other. 
 
 ### Code 
 ```
