@@ -711,6 +711,34 @@ class Solution:
         return candidate
 ```
 
+## 22. [Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
+Given the root of the binary tree, invert the tree left to right.
+
+### Approach
+Use the recursive approach. Invert the tree as your traverse it. Using BFS to invert does not naturally work since you lose the reference to the parent while traversing the child nodes at any level. This causes issues with swapping when new nodes are created. 
+
+### Code 
+```
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root is None:
+            return root
+        
+        if root.left is not None or root.right is not None:
+            root.left, root.right = root.right, root.left
+        
+        self.invertTree(root.left)
+        self.invertTree(root.right)
+
+        return root
+```
+
 # Medium Problems
 
 ## 1. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
