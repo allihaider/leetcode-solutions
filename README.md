@@ -739,6 +739,35 @@ class Solution:
         return root
 ```
 
+## 23. [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+Given the head of linked list, determine if it has a cycle.
+
+### Approach
+The regular O(n) time and space way to do this would be to use a hashmap. In this solution, we use the Hare-Tortoise algorithm which uses two pointers where one runs through the linked list faster than the other. 
+
+### Code 
+```
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        fast_pointer = head
+        slow_pointer = head
+
+        while fast_pointer and fast_pointer.next:
+            fast_pointer = fast_pointer.next.next
+            slow_pointer = slow_pointer.next
+
+            if fast_pointer == slow_pointer:
+                return True
+        
+        return False
+```
+
 # Medium Problems
 
 ## 1. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
