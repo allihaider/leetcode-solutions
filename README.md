@@ -768,6 +768,37 @@ class Solution:
         return False
 ```
 
+## 24. [Baseball Game](https://leetcode.com/problems/baseball-game/)
+Given a list of strings called operations, apply those operations to a running record and return the sum of the scores on the record.
+
+### Approach
+Iterate over the operations, applying them to the record and keeping track of the sum on the side.
+
+### Code 
+```
+class Solution:
+    def calPoints(self, operations: List[str]) -> int:
+        record = []
+        record_sum = 0
+
+        for operation in operations:
+            if operation == "+":
+                record.append(record[-2] + record[-1])
+                record_sum += record[-1]
+            elif operation == "D":
+                record.append(2 * record[-1])
+                record_sum += record[-1]
+            elif operation == "C":
+                record_sum -= record[-1]
+                record.pop(-1)
+            else:
+                record.append(int(operation))
+                record_sum += record[-1]
+    
+        return record_sum
+```
+
+
 # Medium Problems
 
 ## 1. [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
