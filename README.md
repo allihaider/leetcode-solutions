@@ -800,3 +800,34 @@ class Solution:
         else:
             return 0
 ```
+
+## 2. [Prime Pairs With Target Sum](https://leetcode.com/problems/prime-pairs-with-target-sum/)
+Given an integer n, return the 2-D sorted list of prime pairs that add up to n. 
+
+### Approach
+Use the sieve of erastosthenes algorithm.
+
+### Code 
+```
+class Solution:
+    def findPrimePairs(self, n: int) -> List[List[int]]:
+
+        if n == 1 or n == 2:
+            return []
+
+        prime_markings = [True] * (n + 1)
+        prime_markings[1] = False
+
+        for i in range(2, n + 1):
+            if prime_markings[i]:
+                for j in range(2 * i, n + 1, i):
+                    prime_markings[j] = False
+        
+        prime_pairs = []
+
+        for i in range(1, floor(n/2) + 1):
+            if prime_markings[i] and prime_markings[n - i]:
+                prime_pairs.append([i, n - i])
+        
+        return prime_pairs
+```
